@@ -7,7 +7,7 @@ const { ensureAuthenticated } = require('../config/auth');
 let errors = [];
 /* GET users listing. */
 router.get('/register', (req, res, next) => {
-  res.render('register', { title: 'Register', errors });
+  res.render('register', { errors });
 });
 
 router.post('/register', async (req,res) => {
@@ -17,6 +17,10 @@ router.post('/register', async (req,res) => {
 
   if (!login || !email || !password || !passwordConfirm) {
     errors.push({ msg: 'Please enter all fields' });
+  }
+
+  if (login === "admin" || login === "Admin") {
+    errors.push({ msg: 'This username is not allowed'});
   }
 
   if (password != passwordConfirm) {
@@ -95,5 +99,17 @@ router.get('/login', (req, res, next) => {
     req.flash('success_msg', 'You are logged out');
     res.redirect('/user/login')
   });
+
+  // Change name
+
+  router.get('/changeName', (req, res) => {
+    res.render('changeName');
+  });
+
+  router.post('/changeName', async (req,res) => {
+    const user = await User.findOne({ email: req.body.email });
+    console.log(user); 
+  });
+
 
 module.exports = router;

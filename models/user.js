@@ -20,6 +20,10 @@ const userSchema = new Schema({
     enum: ['user', 'moderator', 'admin'],
     default: 'user'
   },
+  accepted: {
+    type: Boolean,
+    default: false
+  },
   password: {
     type: String,
     required: [true, 'Please provide a password'],

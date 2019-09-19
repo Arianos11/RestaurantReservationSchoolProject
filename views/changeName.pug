@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    div(class="login")
+        div
+            i(class="fas fa-sign-in-alt")
+            h1(class="title") Change Name
+            - if(success_msg != '')
+                div(class="pop pop__success") #{success_msg}
+            - if(error_msg != '')
+                div(class="pop pop__error") #{error_msg}
+            - if(error != '')
+                div(class="pop pop__error") #{error}
+        form(action="/user/changeName" method="post" class="login--form")
+            p(class="login--item")
+                input(type="text" id="name" name="name")
+                label name
+            p(class="login--item")
+                input(type="password" id="name2" name="name2")
+                label Confirm name
+            p(class="login--item")
+                input(type="submit" value="Change Name" class="btn--login")
