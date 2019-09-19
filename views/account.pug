@@ -4,6 +4,12 @@ block content
   div.account
     h1= title
     p.account--name Welcome #{login}
+    - if(success_msg != '')
+        div(class="pop pop__success") #{success_msg}
+    - if(error_msg != '')
+        div(class="pop pop__error") #{error_msg}
+    - if(error != '')
+        div(class="pop pop__error") #{error}
     if login === 'Admin'
       a.account--btn(href='/admin') Admin Panel
     else

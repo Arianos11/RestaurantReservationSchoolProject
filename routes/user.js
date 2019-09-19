@@ -3,8 +3,10 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 const passport = require('passport');
+const mongoose = require('mongoose');
 const { ensureAuthenticated } = require('../config/auth');
 let errors = [];
+const pattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
 /* GET users listing. */
 router.get('/register', (req, res, next) => {
   res.render('register', { errors });
@@ -13,7 +15,6 @@ router.get('/register', (req, res, next) => {
 router.post('/register', async (req,res) => {
   errors = [];
   const { login, email, password, passwordConfirm } = req.body;
-  const pattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
 
   if (!login || !email || !password || !passwordConfirm) {
     errors.push({ msg: 'Please enter all fields' });
@@ -102,14 +103,74 @@ router.get('/login', (req, res, next) => {
 
   // Change name
 
-  router.get('/changeName', (req, res) => {
-    res.render('changeName');
+  router.get('/changeName', ensureAuthenticated, (req, res) => {
+    res.render('changeName', {login: req.user.login});
   });
 
   router.post('/changeName', async (req,res) => {
-    const user = await User.findOne({ email: req.body.email });
-    console.log(user); 
+    const errors = [];
+    const { name, name2 } = req.body;
+    if (!name) {
+      errors.push({ msg: 'NONAME!' });
+    }
+    if (name != name2) {
+      errors.push({ msg: 'Names do not match' });
+    }
+    if(name.length > 20)
+    {
+      errors.push({ msg: 'Too long name!'});
+    }
+
+    if (errors.length > 0) {
+      req.flash('error_msg', errors[0].msg);
+      res.redirect('/user/changeName');
+    } else {
+      const user = await User.findOne({ _id: req.user._id });
+      user.login = name;
+      await user.save();
+      req.flash('success_msg', 'Your name has been changed!');
+      res.redirect('/account');
+    } 
   });
+
+  //Change Password
+
+  router.get('/changePassword', ensureAuthenticated, (req, res) => {
+    res.render('changePassword', {login: req.user.login, errors});
+  });
+
+  router.post('/changePassword', async (req,res) => {
+    const errors = [];
+    const { password, password2 } = req.body;
+    if (!password) {
+      errors.push({ msg: 'NOPASSWORD!' });
+    }
+    if (password != password2) {
+      errors.push({ msg: 'Password do not match' });
+    }
+    if (password.length < 8) {
+      errors.push({ msg: 'Password must be at least 8 characters' });
+    }
+  
+    if(!pattern.test(password)) {
+      errors.push({ msg: 'Password requires uppercase, numbers and special characters' });
+    }
+
+    if (errors.length > 0) {
+      req.flash('error_msg', errors[0].msg);
+      res.render('changePassword', { errors, login: req.user.login });
+    } else {
+      const user = await User.findOne({ _id: req.user._id });
+      await bcrypt.genSalt(12, (err, salt) => bcrypt.hash(password, salt, (err, hash) => {
+        if(err) throw err;
+        user.password = hash;
+        user.save().then(user => {
+          req.flash('success_msg', 'Your password has been changed');
+          res.redirect('/account')
+        })
+        .catch(err => console.log(err));
+    })); 
+  }});
 
 
 module.exports = router;
