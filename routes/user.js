@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 const passport = require('passport');
 const mongoose = require('mongoose');
+const nodemailer = require('nodemailer');
 const { ensureAuthenticated } = require('../config/auth');
 let errors = [];
 const pattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
@@ -65,15 +66,50 @@ router.post('/register', async (req,res) => {
           if(err) throw err;
           newUser.password = hash;
           newUser.save().then(user => {
-            req.flash('success_msg', 'You are now registered and can log in')
+            //Register Mail
+            async function mail() {
+              // create reusable transporter object using the default SMTP transport
+              let transporter = nodemailer.createTransport({
+                  host: 'smtp.gmail.com',
+                  port: 465,
+                  secure: true, // true for 465, false for other ports
+                  auth: {
+                      user: 'restauracja.divaldo@gmail.com', // generated ethereal user
+                      pass: '' // generated ethereal password
+                  }
+              });
+              // send mail with defined transport object
+              const id = await User.findOne({ email: email });
+              const link = `http://localhost:3000/user/verification/${id._id}`
+              let info = await transporter.sendMail({
+                  from: '"Restauracja Divaldo" <restauracja.divaldo@gmail.com>', // sender address
+                  to: email, // list of receivers
+                  subject: 'Confirm your email ✔', // Subject line
+                  text: `Hello ${login} Confirm your email here ${link}`, // plain text body
+                  html: `<b>Hello ${login}</b><br /><h1>Confirm your email here: ${link}</h1>` // html body
+              });
+            }
+            mail().catch(console.error);
+            });
+            req.flash('success_msg', 'You are now registered, accept email!')
             res.redirect('/user/login')
-          })
-          .catch(err => console.log(err));
-        }));
+          }));
+        };
       }
-    });
-  }
-});
+)}});
+
+    
+
+//Verification
+
+router.get('/verification/:id', async (req, res ,next) => {
+  const id = req.params.id;
+  const user = await User.findOne({ _id:  id});
+  user.accepted = true;
+  await user.save();
+  req.flash('success_msg', 'You can log in now!')
+  res.redirect('/user/login')
+})
 
 //Login
 
@@ -171,6 +207,5 @@ router.get('/login', (req, res, next) => {
         .catch(err => console.log(err));
     })); 
   }});
-
 
 module.exports = router;
