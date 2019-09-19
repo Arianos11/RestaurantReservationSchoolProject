@@ -1,0 +1,102 @@
+.pop {
+    font-size: 1.1rem;
+    padding: 1rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+
+    &__success {
+        background-color: $color-success;
+        color: #fff;
+    }
+
+    &__error {
+        background-color: $color-error;
+        color: #fff;
+    }
+  }
+  
+  .login {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.3);
+    border-radius: 1rem;
+
+    &--item {
+        width: 80%;
+        margin: 24px auto;
+        position: relative;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        font-size: 2rem;
+    }
+
+    &--change {
+        margin: 1rem;
+    
+        a {
+            color: $color-primary;
+        }
+      }
+  }
+  
+  .title {
+    margin-top: 3rem;
+    display: inline-block;
+    margin-bottom: 2rem;
+  }
+  .fa-sign-in-alt {
+    display: inline-block;
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+  .fa-user-plus
+  {
+    display: inline-block;
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+  
+  label {
+    color: $color-gray;
+    position: absolute;
+    top: -25px;
+    left: 10px;
+    transition: .2s ease-out all;
+    font-size: 16px;
+  }
+  
+  form p input {
+    padding: 0.5rem 1.5rem;
+    font-size: 1.2rem;
+    border: 1px solid #aeaeae;
+  }
+  
+  input:focus {
+    outline-color: $color-primary;
+  }
+  
+  .btn--login{
+    border-radius: 2rem;
+    border: none;
+    background-color: $color-primary;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0.5rem 1.5rem rgba(0,0,0, 0.2);
+    outline: none;
+  }
+  
+  .error_msg_reg
+  {
+    margin-top: 0.3rem;
+    color: red;
+  }

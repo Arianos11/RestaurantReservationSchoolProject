@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    div(class="login")
+        div
+            i(class="fas fa-sign-in-alt")
+            h1(class="title")= title
+            - if(success_msg != '')
+                div(class="pop pop__success") #{success_msg}
+            - if(error_msg != '')
+                div(class="pop pop__error") #{error_msg}
+            - if(error != '')
+                div(class="pop pop__error") #{error}
+        form(action="/user/login" method="post" class="login--form")
+            p(class="login--item")
+                input(type="text" id="email" name="email")
+                label email
+            p(class="login--item")
+                input(type="password" id="password" name="password")
+                label password
+            p(class="login--item")
+                input(type="submit" value="Login" class="btn--login")
+            p(class="login--change") If you don't have an account you can 
+                a(href='/user/register') register here
+    <script src="https://kit.fontawesome.com/19ed2bebb2.js"></script>

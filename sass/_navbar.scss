@@ -1,0 +1,45 @@
+.nav {
+    &--container {
+      background-color: $color-primary;
+      width: 100%;
+      min-height: 5rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    &--logo {
+      display: flex;
+      text-align: center;
+      align-items: center;
+      margin-left: 1rem;
+      color: $color-gray;
+    }
+    &--right {
+      display: flex;
+      justify-content: flex-end;
+      text-align: center;
+      align-items: center;
+    }
+  }
+  
+  .nav--item
+  {
+    font-size: 1.1rem;
+    margin-right: 2rem;
+    list-style: none;
+        &:last-child
+        {
+            margin-right: 3rem;
+        }
+        &--link, &--item:active, &--link:link {
+            color: #bbb;
+            text-decoration: none;
+            transition: color .2s;
+        }
+        &--link:hover {
+            color: #fff;
+        }
+  }
+  
+  .active{
+    color: #fff!important;
+  }

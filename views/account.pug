@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  div.account
+    h1= title
+    p.account--name Welcome #{login}
+    if login === 'Admin'
+      a.account--btn(href='/admin') Admin Panel
+    else
+      a.account--btn(href='/user/reservation') Your Reservations
+      a.account--btn(href='/user/changeName') Change Name      
+    a.account--btn(href='/user/changePassword') Change Password
+    a.account--btn(href='/user/logout') Logout

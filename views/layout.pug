@@ -1,0 +1,19 @@
+doctype html
+
+mixin item(title, url)
+  li(class="nav--item")
+    a(href=url class=path == url ? 'nav--item--link active' : 'nav--item--link')=title
+
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    <script src="https://kit.fontawesome.com/19ed2bebb2.js"></script>
+  body
+    nav.nav--container
+      div.nav--logo
+        h1 Restaurant
+      ul.nav--right
+        +item('Main Page', "/")
+        +item( login ? 'Account' : 'Login', "/user/login")
+    block content

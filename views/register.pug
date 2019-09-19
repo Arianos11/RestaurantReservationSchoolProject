@@ -1,0 +1,31 @@
+extends layout
+block content
+    div(class="login")
+        div
+            i(class="fas fa-user-plus")
+            h1(class="title")= title
+        - var n = 0
+        while n < errors.length
+            p(class="error_msg_reg") #{errors[n].msg}
+            - n++
+        - if(success_msg != '')
+                div(class="pop pop__success") #{success_msg}
+        - if(error_msg != '')
+                div(class="pop pop__error") #{error_msg}
+        form(method="post" class="login--form")
+            p(class="login--item")
+                label login
+                input(type="text" name="login" value= login != undefined ? login : '')
+            p(class="login--item")
+                label e-mail
+                input(type="text" name="email" value= email != undefined ? email : '')
+            p(class="login--item")
+                label password
+                input(type="password" name="password" value= password != undefined ? password : '')
+            p(class="login--item")
+                label Confirm password
+                input(type="password"  name="passwordConfirm" value= passwordConfirm != undefined ? passwordConfirm : '')
+            p(class="login--item")
+                input(type="submit" value="Register" class="btn--login")
+            p(class="login--change") if you have an account you can 
+                a(href='/user/login') login here
