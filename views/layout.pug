@@ -2,13 +2,17 @@ doctype html
 
 mixin item(title, url)
   li(class="nav--item")
-    a(href=url class=path == url ? 'nav--item--link active' : 'nav--item--link')=title
+    a(href=url class=path == url ? 'nav--item--link choosen' : 'nav--item--link')=title
 
 html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet' href='/stylesheets/datepicker.min.css')
     <script src="https://kit.fontawesome.com/19ed2bebb2.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="/javascripts/datepicker.min.js"></script>
+    <script src="/javascripts/i18n/datepicker.en.js"></script>
   body
     nav.nav--container
       div.nav--logo
