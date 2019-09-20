@@ -74,13 +74,15 @@ router.post('/register', async (req,res) => {
                   port: 465,
                   secure: true, // true for 465, false for other ports
                   auth: {
-                      user: 'restauracja.divaldo@gmail.com', // generated ethereal user
+                      user: '', // generated ethereal user
                       pass: '' // generated ethereal password
                   }
               });
               // send mail with defined transport object
               const id = await User.findOne({ email: email });
-              const link = `http://localhost:3000/user/verification/${id._id}`
+              const day = 1000*60*60*24;
+              const date = Date.now() + day;
+              const link = `http://localhost:3000/user/verification/${id._id}/${date}`
               let info = await transporter.sendMail({
                   from: '"Restauracja Divaldo" <restauracja.divaldo@gmail.com>', // sender address
                   to: email, // list of receivers
@@ -102,13 +104,21 @@ router.post('/register', async (req,res) => {
 
 //Verification
 
-router.get('/verification/:id', async (req, res ,next) => {
+router.get('/verification/:id/:date', async (req, res ,next) => {
   const id = req.params.id;
-  const user = await User.findOne({ _id:  id});
-  user.accepted = true;
-  await user.save();
-  req.flash('success_msg', 'You can log in now!')
-  res.redirect('/user/login')
+  const date = req.params.date;
+  if(date > Date.now())
+  {
+    const user = await User.findOne({ _id:  id});
+    user.accepted = true;
+    await user.save();
+    req.flash('success_msg', 'You can log in now!')
+    res.redirect('/user/login')
+  } else {
+    await User.findByIdAndDelete(id);
+    req.flash('error_msg', 'Your verification link is outdated you must register one more time!')
+    res.redirect('/user/login')
+  }
 })
 
 //Login
