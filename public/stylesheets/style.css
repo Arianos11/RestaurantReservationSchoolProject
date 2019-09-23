@@ -198,3 +198,25 @@ input:focus {
     border-radius: 2rem;
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
     padding: .7rem 2.5rem; }
+
+.mainPhoto {
+  height: 90vh;
+  background: url("../images/mainPhoto.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; }
+  .mainPhoto--photo {
+    height: 90vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: relative; }
+    .mainPhoto--photo--sublines {
+      font-size: 4rem;
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 0.1rem 1rem; }
+      .mainPhoto--photo--sublines:last-child {
+        top: 50%; }

@@ -74,8 +74,8 @@ router.post('/register', async (req,res) => {
                   port: 465,
                   secure: true, // true for 465, false for other ports
                   auth: {
-                      user: '', // generated ethereal user
-                      pass: '' // generated ethereal password
+                      user: 'restauracja.divaldo@gmail.com', // generated ethereal user
+                      pass: 'Infradom321!' // generated ethereal password
                   }
               });
               // send mail with defined transport object
