@@ -16,8 +16,11 @@ html
   body
     nav.nav--container
       div.nav--logo
-        h1 Restaurant
+        h1 Divaldo Restaurant
       ul.nav--right
         +item('Main Page', "/")
         +item( login ? 'Account' : 'Login', "/user/login")
     block content
+    .footer
+    block footer
+      

@@ -8,9 +8,11 @@ body {
   font-family: 'Poppins', sans-serif; }
 
 .nav--container {
+  position: fixed;
+  z-index: 1000;
   background-color: #373737;
   width: 100%;
-  min-height: 5rem;
+  height: 8vh;
   display: flex;
   justify-content: space-between; }
 
@@ -204,23 +206,78 @@ input:focus {
     padding: .7rem 2.5rem; }
 
 .mainPhoto {
-  height: 90vh;
+  height: 100vh;
   background: url("../images/mainPhoto.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed; }
   .mainPhoto--photo {
-    height: 90vh;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.4);
     position: relative; }
     .mainPhoto--photo--sublines {
       font-size: 4rem;
       position: absolute;
-      top: 40%;
+      top: 46%;
       left: 50%;
       transform: translate(-50%, -50%);
       background-color: #fff;
       padding: 0.1rem 1rem; }
       .mainPhoto--photo--sublines:last-child {
-        top: 52%; }
+        top: 58%; }
+
+.section--index {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 6rem; }
+  .section--index .photo--1, .section--index .photo--2, .section--index .photo--3 {
+    width: 35rem;
+    height: 20rem;
+    background-color: black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+  .section--index .photo--1 {
+    background: url("../images/indexPhoto1.jpg");
+    background-size: cover; }
+  .section--index .photo--2 {
+    background: url("../images/indexPhoto2.jpg");
+    background-size: cover; }
+  .section--index .photo--3 {
+    background: url("../images/indexPhoto3.jpg");
+    background-size: cover; }
+  .section--index .text {
+    width: 35rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+    .section--index .text h1 {
+      margin-bottom: 4rem; }
+    .section--index .text h4 {
+      padding: 1rem; }
+    .section--index .text .button--book {
+      color: white;
+      background-color: #2ECC71;
+      text-decoration: none;
+      font-size: 1.5rem;
+      padding: 1rem 3rem; }
+  .section--index .open-Hours {
+    width: 35rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+    .section--index .open-Hours h1 {
+      margin-bottom: 4rem; }
+
+.footer {
+  margin-top: 5rem;
+  width: 100%;
+  height: 10rem;
+  background-color: #373737; }

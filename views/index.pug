@@ -1,8 +1,25 @@
 extends layout
 
 block content
-    div.mainPhoto
-        div.mainPhoto--photo
-            div.mainPhoto--photo--sublines Restaurant
-            div.mainPhoto--photo--sublines Divaldo
-    a(href="/book") Book your table
+    .mainPhoto
+        .mainPhoto--photo
+            .mainPhoto--photo--sublines Restaurant
+            .mainPhoto--photo--sublines Divaldo
+    .section--index
+        .photo--1
+        .text
+            h1 Divaldo
+            h4 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+    .section--index
+        .text
+            h1 Book your table
+            a(href="/book" class="button--book") Book now
+        .photo--2
+    .section--index
+        .photo--3
+        .open-Hours
+            h1 Open Hours
+            h2 Mon - Fri 10 AM - 8 PM
+            h2 Saturday 12 AM - 7 PM
+            h2 Sunday 12 AM - 6 PM
+    block footer

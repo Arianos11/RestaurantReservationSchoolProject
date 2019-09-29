@@ -1,8 +1,10 @@
 .nav {
     &--container {
+      position: fixed;
+      z-index: 1000;
       background-color: $color-primary;
       width: 100%;
-      min-height: 5rem;
+      height: 8vh;
       display: flex;
       justify-content: space-between;
     }
