@@ -6,6 +6,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
 const { ensureAuthenticated } = require('../config/auth');
+const keys = require("../config/keys");
 let errors = [];
 const pattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
 /* GET users listing. */
@@ -74,8 +75,8 @@ router.post('/register', async (req,res) => {
                   port: 465,
                   secure: true, // true for 465, false for other ports
                   auth: {
-                      user: 'restauracja.divaldo@gmail.com', // generated ethereal user
-                      pass: 'Infradom321!' // generated ethereal password
+                      user: keys.email, // generated ethereal user
+                      pass: keys.emailPassword // generated ethereal password
                   }
               });
               // send mail with defined transport object

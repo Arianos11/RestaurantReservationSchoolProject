@@ -142,7 +142,7 @@ input:focus {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     display: flex; }
   .book--img {
-    width: 50%;
+    width: 60%;
     background: url("../images/book--container.jpg");
     background-position: center;
     background-size: cover;
@@ -150,36 +150,66 @@ input:focus {
     border-radius: 2rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
   .book--menu {
-    width: 50%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     align-content: center; }
     .book--menu--date {
-      border-radius: 1rem;
-      margin: 3rem 3rem 0 3rem;
+      border-radius: 0.5rem;
+      margin: 4rem 1.5rem 0 1.5rem;
       min-height: 2.5rem;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       display: flex;
       justify-content: center;
       align-content: center; }
-      .book--menu--date .people, .book--menu--date .calendar, .book--menu--date .time {
+      .book--menu--date .people,
+      .book--menu--date .calendar,
+      .book--menu--date .search {
         flex-direction: column;
         display: flex;
         justify-content: center; }
-        .book--menu--date .people .fa-calendar, .book--menu--date .people .fa-clock, .book--menu--date .people .fa-user, .book--menu--date .calendar .fa-calendar, .book--menu--date .calendar .fa-clock, .book--menu--date .calendar .fa-user, .book--menu--date .time .fa-calendar, .book--menu--date .time .fa-clock, .book--menu--date .time .fa-user {
+        .book--menu--date .people .fa-calendar,
+        .book--menu--date .people .fa-user,
+        .book--menu--date .calendar .fa-calendar,
+        .book--menu--date .calendar .fa-user,
+        .book--menu--date .search .fa-calendar,
+        .book--menu--date .search .fa-user {
           position: absolute;
           margin-left: 0.5rem; }
-        .book--menu--date .people select, .book--menu--date .people input, .book--menu--date .calendar select, .book--menu--date .calendar input, .book--menu--date .time select, .book--menu--date .time input {
+        .book--menu--date .people select,
+        .book--menu--date .people input,
+        .book--menu--date .calendar select,
+        .book--menu--date .calendar input,
+        .book--menu--date .search select,
+        .book--menu--date .search input {
           height: 100%;
           padding: 0 1.5rem;
           border: solid 1px white;
-          border-left: solid 2px #7d7d7d; }
-        .book--menu--date .people input, .book--menu--date .calendar input, .book--menu--date .time input {
-          max-width: 9rem; }
-        .book--menu--date .people select, .book--menu--date .calendar select, .book--menu--date .time select {
-          min-width: 6rem; }
-        .book--menu--date .people .select-last, .book--menu--date .calendar .select-last, .book--menu--date .time .select-last {
           border-right: solid 2px #7d7d7d; }
+        .book--menu--date .people input,
+        .book--menu--date .calendar input,
+        .book--menu--date .search input {
+          max-width: 9rem; }
+        .book--menu--date .people select,
+        .book--menu--date .calendar select,
+        .book--menu--date .search select {
+          min-width: 6rem; }
+        .book--menu--date .people button,
+        .book--menu--date .calendar button,
+        .book--menu--date .search button {
+          height: 100%;
+          width: 100%;
+          border: none;
+          background-color: #2ecc71;
+          color: white;
+          border-radius: 0 .5rem .5rem 0;
+          cursor: pointer; }
+        .book--menu--date .people .select-last,
+        .book--menu--date .calendar .select-last,
+        .book--menu--date .search .select-last {
+          border: 1px solid white; }
+      .book--menu--date .search {
+        width: 100%; }
 
 .account {
   position: absolute;
@@ -255,7 +285,7 @@ input:focus {
     text-align: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
     .section--index .text h1 {
-      margin-bottom: 4rem; }
+      margin-bottom: 3rem; }
     .section--index .text h4 {
       padding: 1rem; }
     .section--index .text .button--book {
@@ -280,4 +310,12 @@ input:focus {
   margin-top: 5rem;
   width: 100%;
   height: 10rem;
-  background-color: #373737; }
+  background-color: #373737;
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  text-align: center; }
+  .footer--col {
+    width: 10rem;
+    height: 10rem;
+    align-content: center; }

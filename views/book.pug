@@ -6,24 +6,21 @@ block content
         div.book--container
             div.book--img
             div.book--menu
-                div.book--menu--date
+                .book--menu--date
                     div.calendar
                         i(class="far fa-calendar")
                         input(type='text' id="datapicker" class="datepicker-here" data-language='en' name="date" placeholder="Choose date")                         
-                    div.time
-                        i(class="far fa-clock")
-                        <select>
-                            <option value="0">8:00</option>
-                            <option value="1">8:15</option>
-                            <option value="2">8:30</option>
-                            <option value="3">8:45</option>
-                        </select>
                     div.people
                         i(class="far fa-user")
-                        <select class="select-last">
-                            <option value="0">1 Person</option>
-                            <option value="1">2 Person</option>
-                            <option value="2">3 Person</option>
-                            <option value="3">4 Person</option>
+                        <select class="select-last" id="person">
+                            <option value="1">1 Person</option>
+                            <option value="2">2 Person</option>
+                            <option value="3">3 Person</option>
+                            <option value="4">4 Person</option>
+                            <option value="5">5 Person</option>
+                            <option value="6">6 Person</option>
                         </select>
+                    div.search
+                        button(onclick="post()") Search
     <script src="/javascripts/data.js"></script>
+    <script src="/javascripts/book.js"></script>

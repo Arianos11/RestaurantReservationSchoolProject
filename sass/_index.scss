@@ -56,7 +56,7 @@
         text-align: center;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         h1 {
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
         h4 {
             padding: 1rem;
@@ -90,4 +90,13 @@
     width: 100%;
     height: 10rem;
     background-color: $color-primary;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    text-align: center;
+    &--col {
+        width: 10rem;
+        height: 10rem;
+        align-content: center;
+    }
 }
