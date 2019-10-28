@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Comfortaa&display=swap");
 *, *::after, *::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box; }
 
 body {
-  font-family: 'Poppins', sans-serif; }
+  font-family: 'Comfortaa', cursive; }
 
 .nav--container {
   position: fixed;
@@ -235,6 +235,20 @@ input:focus {
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
     padding: .7rem 2.5rem; }
 
+.menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center; }
+  .menu--container {
+    display: flex;
+    justify-content: space-evenly; }
+    .menu--container__left ul {
+      list-style: none; }
+
 .mainPhoto {
   height: 100vh;
   background: url("../images/mainPhoto.jpg");
@@ -253,7 +267,7 @@ input:focus {
       left: 50%;
       transform: translate(-50%, -50%);
       background-color: #fff;
-      padding: 0.1rem 1rem; }
+      padding: 0.5rem 1rem; }
       .mainPhoto--photo--sublines:last-child {
         top: 58%; }
 

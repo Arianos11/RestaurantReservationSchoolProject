@@ -1,19 +1,18 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const validator = require('validator');
 
 const tableSchema = new Schema({
   tableNumber: {
-      Name: Number,
+      type: Number,
       required: [true, "Number is required"],
       unique: [true, "Number must be unique"]
   },
   person: {
-    HowMuch: Number,
+    type: Number,
     required: [true, "Number is required"],
   },
   hoursReserved: {
-      hours: Date
+      type: Date
   }
 
 });
